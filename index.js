@@ -9,24 +9,29 @@ const {connect,initSchemas} = require('./database/init.js')
 app.use(bodyParser())
 
 let user = require('./appApi/user.js')
+let goods = require('./appApi/goods.js')
 let router = new Router()
 router.use('/user',user.routes())
+router.use('/goods',goods.routes())
 
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-;(async ()=>{
+;(async () =>{
   await connect()
   initSchemas()
-  // const User = mongoose.model('User')
-  // let oneUser = new User({userName:'magehui',password:'123456'})
-  // oneUser.save().then(()=>{
-  //   console.log('插入成功')
-  // })
-  // let users = await User.findOne({}).exec()
-  // console.log('---------------')
-  // console.log(users)
-  // console.log('----------------------')
+//   const User = mongoose.model('User')
+//   let oneUser = new User({userName:'jspang13',password:'123456'})
+
+//   oneUser.save().then(()=>{
+//       console.log('插入成功')
+      
+//   })
+// let  users = await  User.findOne({}).exec()
+
+// console.log('------------------')
+// console.log(users)
+// console.log('------------------')  
 })()
 
 app.use(async(ctx)=>{
